@@ -5,5 +5,26 @@
 {% block body %}
 <div class="container-homepage">
     <h1>Homepage</h1>
+
+    <div class="container-welcome">
+        {% if app.user %}
+            <h1>Bienvenue {{app.user.email}}</h1>
+        {% else %}
+            <h1>Bienvenue sur CRM3000</h1>
+        {% endif %}   
+    </div>
+
+    <div class="container-login">
+        {% if is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('admin_dashboard_index')}}">Acceder à mon profil</a>
+        {% elseif is_granted("ROLE_USER") %}
+            <a href="{{ path('user_dashboard_index')}}">Acceder à mon profil</a>
+        {% endif %}
+        {% if app.user %}
+            <a href="{{ path('app_logout')}}">Se déconnecter</a>
+        {% else %}
+            <a href="{{ path('app_login')}}">Se connecter</a>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
