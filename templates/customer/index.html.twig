@@ -43,4 +43,10 @@
 
     <a href="{{ path('customer_new') }}">Créer un customer</a>
     <a class="" href="{{ app.request.headers.get('referer') }}">Retour</a>
+    
+    {% if is_granted("ROLE_ADMIN") %}
+        <a href="{{ path('admin_dashboard_index') }}">Interface admin</a>
+    {% elseif is_granted("ROLE_USER") %}
+        <a href="{{ path('user_dashboard_index') }}">Interface admin</a>
+    {% endif %}
 {% endblock %}
