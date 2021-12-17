@@ -42,10 +42,13 @@
 
     {{ include('society/_delete_form.html.twig') }}
 
+        
+    <h3>Gérant de la société: </h3>
+    <p>{{ society.manager.email }}</p>
+
     <div class="collaborator-list">
         <h2>Liste des collaborateurs</h2>
-        
-        {# //TODO <p>Gérant de la société:</p> #}
+
         <ul>
         {% for collaborator in collaborators %}
             <li>{{ collaborator.email }}</li>
