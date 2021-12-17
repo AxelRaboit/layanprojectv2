@@ -3,6 +3,12 @@
 {% block title %}Gestion des customers - CRM3000{% endblock %}
 
 {% block body %}
+    {% for message in app.flashes('message') %}
+        <div class="container-alert-message">
+            <div class="alertSuccessMessage">{{ message }}</div>
+        </div>
+    {% endfor %}
+
     <h1>Gestion des customers</h1>
 
     <table class="table">

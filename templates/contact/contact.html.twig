@@ -7,12 +7,6 @@
 {% endblock %}
 
 {% block body %}
-    {% for message in app.flashes('message') %}
-    <div class="container-alert-message">
-        <div class="alertSuccessMessage">{{ message }}</div>
-    </div>
-    {% endfor %}
-
     {{ form_start(form) }}
             <div>
                 <div>{{ form_label(form.from, "Votre email: ") }}</div>
