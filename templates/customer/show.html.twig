@@ -24,6 +24,10 @@
                 <td>{{ customer.email }}</td>
             </tr>
             <tr>
+                <th>Date du dernier Email</th>
+                <td>{{ customer.lastEmailDate|date('d/m/Y') }}</td>
+            </tr>
+            <tr>
                 <th>A répondu</th>
                 <td>{{ customer.hasAnswered ? 'Yes' : 'No' }}</td>
             </tr>

@@ -49,6 +49,11 @@ class Customer
      */
     private $createdAt;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $lastEmailDate;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -117,5 +122,17 @@ class Customer
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
+    }
+
+    public function getLastEmailDate(): ?\DateTimeInterface
+    {
+        return $this->lastEmailDate;
+    }
+
+    public function setLastEmailDate(\DateTimeInterface $lastEmailDate): self
+    {
+        $this->lastEmailDate = $lastEmailDate;
+
+        return $this;
     }
 }

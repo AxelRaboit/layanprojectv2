@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact le customer {{ customer.firstname }} {{ customer.lastname }} - CRM3000{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('contactCustomer') }}
+{% endblock %}
+
+{% block body %}
+    {% for message in app.flashes('message') %}
+    <div class="container-alert-message">
+        <div class="alertSuccessMessage">{{ message }}</div>
+    </div>
+    {% endfor %}
+
+    {{ form_start(form) }}
+            <div>
+                <div>{{ form_label(form.from, "Votre email: ") }}</div>
+                <div>{{ form_widget(form.from, {value : app.user.email}) }}</div>
+            </div>
+            <div>
+                <div>{{ form_label(form.to, "Email du contact: ") }}</div>
+                <div>{{ form_widget(form.to, {value : customer.email}) }}</div>
+            </div>
+            <div>
+                <div>{{ form_label(form.subject, "Sujet")}}</div>
+                <div>{{ form_widget(form.subject) }}</div>
+            </div>
+            <div>
+                <div>{{ form_label(form.message, "Message")}}</div>
+                <div>{{ form_widget(form.message) }}</div>
+            </div>
+        <button class="btn">{{ button_label|default('Envoyer') }}</button>
+    {{ form_end(form) }}
+    {{ encore_entry_script_tags('contactCustomer') }}
+{% endblock %}

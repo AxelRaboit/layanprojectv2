@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20211217112909 extends AbstractMigration
+final class Version20211217182016 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,16 +20,12 @@ final class Version20211217112909 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE society ADD manager_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE society ADD CONSTRAINT FK_D6461F2783E3463 FOREIGN KEY (manager_id) REFERENCES user (id)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_D6461F2783E3463 ON society (manager_id)');
+        $this->addSql('ALTER TABLE customer ADD last_email_date DATE DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE society DROP FOREIGN KEY FK_D6461F2783E3463');
-        $this->addSql('DROP INDEX UNIQ_D6461F2783E3463 ON society');
-        $this->addSql('ALTER TABLE society DROP manager_id');
+        $this->addSql('ALTER TABLE customer DROP last_email_date');
     }
 }
