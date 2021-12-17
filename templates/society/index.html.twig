@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des sociétés - CRM3000{% endblock %}
+
+{% block body %}
+    <h1>Gestion des sociétés</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Code Postal</th>
+                <th>Siret</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for society in societies %}
+            <tr>
+                <td>{{ society.id }}</td>
+                <td>{{ society.name }}</td>
+                <td>{{ society.address }}</td>
+                <td>{{ society.city }}</td>
+                <td>{{ society.postalCode }}</td>
+                <td>{{ society.siret }}</td>
+                <td>
+                    <a href="{{ path('society_show', {'id': society.id}) }}">Afficher</a>
+                    <a href="{{ path('society_edit', {'id': society.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucune société</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('society_new') }}">Créer une société</a>
+    <a href="{{ path('admin_dashboard_index') }}">Retour au dashboard</a>
+{% endblock %}
