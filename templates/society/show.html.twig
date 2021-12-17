@@ -44,7 +44,11 @@
 
         
     <h3>Gérant de la société: </h3>
-    <p>{{ society.manager.email }}</p>
+    {% if society.manager %}
+        <p>{{ society.manager.email }}</p>
+    {% else %}
+        <p>Aucun gérant</p>    
+    {% endif %}
 
     <div class="collaborator-list">
         <h2>Liste des collaborateurs</h2>

@@ -87,6 +87,15 @@ class SocietyController extends AbstractController
     public function delete(Request $request, Society $society, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$society->getId(), $request->request->get('_token'))) {
+            $collaborators = $society->getCollaborator();
+
+            foreach($collaborators as $collaborator){
+                $collaborator->setSociety(null);
+                $entityManager->flush();
+            }
+            
+            $society->setManager(null);
+            $entityManager->flush();
             $entityManager->remove($society);
             $entityManager->flush();
         }
