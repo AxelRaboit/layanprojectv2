@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Customer{% endblock %}
+{% block title %}Customer {{ customer.firstname }} {{ customer.lastname }}{% endblock %}
 
 {% block body %}
-    <h1>Customer</h1>
+    <h1>Customer {{ customer.firstname }} {{ customer.lastname }}</h1>
 
     <table class="table">
         <tbody>
@@ -12,11 +12,11 @@
                 <td>{{ customer.id }}</td>
             </tr>
             <tr>
-                <th>Firstname</th>
+                <th>Prénom</th>
                 <td>{{ customer.firstname }}</td>
             </tr>
             <tr>
-                <th>Lastname</th>
+                <th>Nom</th>
                 <td>{{ customer.lastname }}</td>
             </tr>
             <tr>
@@ -24,23 +24,23 @@
                 <td>{{ customer.email }}</td>
             </tr>
             <tr>
-                <th>HasAnswered</th>
+                <th>A répondu</th>
                 <td>{{ customer.hasAnswered ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>HasConsumed</th>
+                <th>A consommé</th>
                 <td>{{ customer.hasConsumed ? 'Yes' : 'No' }}</td>
             </tr>
             <tr>
-                <th>CreatedAt</th>
+                <th>Date création</th>
                 <td>{{ customer.createdAt ? customer.createdAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('customer_index') }}">back to list</a>
+    <a class="" href="{{ app.request.headers.get('referer') }}">Retour</a>
 
-    <a href="{{ path('customer_edit', {'id': customer.id}) }}">edit</a>
+    <a href="{{ path('customer_edit', {'id': customer.id}) }}">Modifier</a>
 
     {{ include('customer/_delete_form.html.twig') }}
 {% endblock %}

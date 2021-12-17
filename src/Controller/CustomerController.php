@@ -36,6 +36,9 @@ class CustomerController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $customer->setHasAnswered(0);
+            $customer->setHasConsumed(0);
+
             $entityManager->persist($customer);
             $entityManager->flush();
 

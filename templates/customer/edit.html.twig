@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Customer{% endblock %}
+{% block title %}Modification customer - CRM3000{% endblock %}
 
 {% block body %}
-    <h1>Edit Customer</h1>
+    <h1>Modifier le customer {{ customer.firstname }} {{ customer.lastname }}</h1>
 
-    {{ include('customer/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('customer/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('customer_index') }}">back to list</a>
+    <a class="" href="{{ app.request.headers.get('referer') }}">Retour</a>
 
     {{ include('customer/_delete_form.html.twig') }}
 {% endblock %}
