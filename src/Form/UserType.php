@@ -45,13 +45,13 @@ class UserType extends AbstractType
                     ]),
                 ],
             ))
-            ->add('society', EntityType::class, [
+            /* ->add('society', EntityType::class, [
                 'label' => 'Société',
                 'class' => Society::class,
                 'placeholder' => 'Choisir une société',
                 'required' => false,
                 'choice_label' => 'name'
-            ])
+            ]) */
         ;
     }
 
