@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des produits de société - CRM3000{% endblock %}
+
+{% block body %}
+    <h1>Gestion des produits de société</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Chiffre d'affaire</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.salesTurnover }}</td>
+                <td>
+                    <a href="{{ path('item_show', {'id': item.id}) }}">Afficher</a>
+                    <a href="{{ path('item_edit', {'id': item.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">Aucun produit</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('item_new') }}">Créer un produit</a>
+    <a href="{{ path('admin_dashboard_index') }}">Retour au dashboard</a>
+{% endblock %}
