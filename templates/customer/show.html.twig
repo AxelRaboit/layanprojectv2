@@ -42,7 +42,7 @@
         </tbody>
     </table>
 
-    <a class="" href="{{ app.request.headers.get('referer') }}">Retour</a>
+    <a class="" href="{{ path('customer_index')}}">Retour</a>
 
     <a href="{{ path('customer_edit', {'id': customer.id}) }}">Modifier</a>
 
