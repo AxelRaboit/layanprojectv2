@@ -53,8 +53,11 @@ class SocietyController extends AbstractController
      */
     public function show(Society $society): Response
     {
+        $collaborators = $society->getCollaborator();
+
         return $this->render('society/show.html.twig', [
             'society' => $society,
+            'collaborators' => $collaborators
         ]);
     }
 

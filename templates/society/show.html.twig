@@ -34,6 +34,17 @@
         </tbody>
     </table>
 
+    <div class="collaborator-list">
+        <h2>Liste des collaborateurs</h2>
+        <ul>
+        {% for collaborator in collaborators %}
+            <li>{{ collaborator.email }}</li>
+        {% else %}
+            <li>Aucun collaborateur</li>
+        {% endfor %}
+        </ul>
+    </div>
+
     <a href="{{ path('society_index') }}">Retour à la liste</a>
 
     <a href="{{ path('society_edit', {'id': society.id}) }}">Modifier</a>
