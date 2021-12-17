@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Modifier l'utilisateur {{ user.email }}</h1>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a class="" href="{{ app.request.headers.get('referer') }}">Retour</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}
