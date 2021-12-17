@@ -5,6 +5,10 @@
 {% block body %}
     <h1>Société {{ society.name }}</h1>
 
+    <div class="container-bill-download">
+        <a href="{{ path('bill_data_download', {'id': society.id})}}">Générer une facture des ventes</a>
+    </div>
+
     <table class="table">
         <tbody>
             <tr>

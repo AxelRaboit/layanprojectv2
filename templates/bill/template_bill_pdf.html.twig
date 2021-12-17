@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}Facture{% endblock %} </title>
+</head>
+<body>
+    {% block body %}
+
+    <style>
+    * {
+        font-family: Verdana, Arial, sans-serif;
+    }
+    table{
+        font-size: x-small;
+    }
+    tfoot tr td{
+        font-weight: bold;
+        font-size: x-small;
+    }
+    .background {
+        background-color: #d62020;
+    }
+    th {
+        background-color: #d62020;
+        color: white;
+    }
+    
+    .text-center {
+        text-align: center;
+    }
+    .text-right {
+        text-align: right;
+    }
+    .container-text-bottom {
+        margin-top: 200px;
+    }
+    </style>
+
+</head>
+<body>
+    <table width="100%">
+        <tr>
+            <td>
+                {{ society.name }} <br/>
+                {{ society.address }} <br/>
+                {{ society.postalCode}} {{ society.city}} <br/>
+                Siret {{ society.siret }}
+            </td>
+            <td class="text-right">
+                <h3>Facture émise par {{ society.name }}</h3>
+            </td>
+        </tr>
+    </table>
+    
+      <br/>
+    
+    <table width="100%">
+        <thead style="background-color: lightgray;">
+            <tr>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Quantité</th>
+            <th>Prix unitaire</th>
+            <th>Total $</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            {% for item in items %}
+                <th scope="row">{{ loop.index }}</th>
+                <td class="text-center">
+                    {{ item.name }}
+                </td>
+            <td class="text-center">{{ item.quantity }}</td>
+            <td class="text-center">{{ item.price }}</td>
+            <td class="text-center">{{ item.salesTurnover }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+            </tr>
+            <tr>
+                <td colspan="4"></td>
+            </tr>
+            <tr>
+                <td colspan="4"></td>
+                <td class="text-center">Total €</td>
+                <td class="text-center background"> {{ totalSalesTurnover }} €</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    {% endblock %}
+</body>
+</html>
