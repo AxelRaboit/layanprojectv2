@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/societe", name="society_")
+ * @Route("/interface-admin/societe", name="society_")
  */
 class SocietyController extends AbstractController
 {
