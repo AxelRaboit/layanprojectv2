@@ -49,6 +49,11 @@ class Society
      */
     private $collaborator;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     */
+    private $manager;
+
     public function __construct()
     {
         $this->collaborator = new ArrayCollection();
@@ -145,6 +150,18 @@ class Society
                 $collaborator->setSociety(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getManager(): ?User
+    {
+        return $this->manager;
+    }
+
+    public function setManager(?User $manager): self
+    {
+        $this->manager = $manager;
 
         return $this;
     }
