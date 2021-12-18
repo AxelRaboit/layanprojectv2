@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use App\Repository\SocietyRepository;
@@ -57,7 +58,10 @@ class BillController extends AbstractController
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->render();
 
-        $file = 'Facture-000.pdf';
+        $date = new DateTime('now');
+        $date = $date->format('Y-m-d H:i');
+
+        $file = 'Facture-' . $date .'.pdf';
 
         $dompdf->stream($file, [
             'Attachment' => true
