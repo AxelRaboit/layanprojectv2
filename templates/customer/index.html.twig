@@ -2,58 +2,70 @@
 
 {% block title %}Gestion des customers - CRM3000{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('customerIndex') }}
+{% endblock %}
+
 {% block body %}
-    {% for message in app.flashes('message') %}
-        <div class="container-alert-message">
-            <div class="alertSuccessMessage">{{ message }}</div>
-        </div>
-    {% endfor %}
-
-    <h1>Gestion des customers</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Prénom</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>A répondu</th>
-                <th>A consommé</th>
-                <th>Date cration</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for customer in customers %}
-            <tr>
-                <td>{{ customer.id }}</td>
-                <td>{{ customer.firstname }}</td>
-                <td>{{ customer.lastname }}</td>
-                <td>{{ customer.email }}</td>
-                <td>{{ customer.hasAnswered ? 'Oui' : 'Non' }}</td>
-                <td>{{ customer.hasConsumed ? 'Oui' : 'Non' }}</td>
-                <td>{{ customer.createdAt ? customer.createdAt|date('d-m-Y H:i') : '' }}</td>
-                <td>
-                    <a href="{{ path('customer_show', {'id': customer.id}) }}">Afficher</a>
-                    <a href="{{ path('email_customer', {'id': customer.id}) }}">Contacter</a>
-                    <a href="{{ path('customer_edit', {'id': customer.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">Aucun customer</td>
-            </tr>
+    <div class="container-customer-index">
+        {% for message in app.flashes('message') %}
+            <div class="container-alert-message">
+                <div class="alertSuccessMessage">{{ message }}</div>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('customer_new') }}">Créer un customer</a>
-    <a class="" href="{{ app.request.headers.get('referer') }}">Retour</a>
-    
-    {% if is_granted("ROLE_ADMIN") %}
-        <a href="{{ path('admin_dashboard_index') }}">Interface admin</a>
-    {% elseif is_granted("ROLE_USER") %}
-        <a href="{{ path('user_dashboard_index') }}">Interface admin</a>
-    {% endif %}
+        <div class="container-header">
+            <h1>Gestion des customers</h1>
+        </div>
+        
+        <div class="container-table">
+            <div class="container-table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Prénom</th>
+                            <th>Nom</th>
+                            <th>Email</th>
+                            <th>A répondu</th>
+                            <th>A consommé</th>
+                            <th>Date cration</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for customer in customers %}
+                        <tr>
+                            <td>{{ customer.id }}</td>
+                            <td>{{ customer.firstname }}</td>
+                            <td>{{ customer.lastname }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>{{ customer.hasAnswered ? 'Oui' : 'Non' }}</td>
+                            <td>{{ customer.hasConsumed ? 'Oui' : 'Non' }}</td>
+                            <td>{{ customer.createdAt ? customer.createdAt|date('d/m/Y à H:i') : '' }}</td>
+                            <td>
+                                <a class="form-action-button" href="{{ path('customer_show', {'id': customer.id}) }}">Afficher</a>
+                                <a class="form-action-button" href="{{ path('email_customer', {'id': customer.id}) }}">Contacter</a>
+                                <a class="form-action-button" href="{{ path('customer_edit', {'id': customer.id}) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="8">Aucun customer</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                <a class="regular-button blue-button" href="{{ path('customer_new') }}">Créer un customer</a>
+                
+                {% if is_granted("ROLE_ADMIN") %}
+                    <a class="regular-button blue-button" href="{{ path('admin_dashboard_index') }}">Interface admin</a>
+                {% elseif is_granted("ROLE_USER") %}
+                    <a class="regular-button blue-button" href="{{ path('user_dashboard_index') }}">Interface utilisateur</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    {{ encore_entry_script_tags('customerIndex') }}
 {% endblock %}

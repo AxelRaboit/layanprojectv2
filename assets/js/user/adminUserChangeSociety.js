@@ -1,0 +1,1 @@
+import '../../styles/user/adminUserChangeSociety.scss';

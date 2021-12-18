@@ -1,4 +1,19 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
-{{ form_end(form) }}
+{% extends "base.html.twig" %}
+
+{% block title %}Modification de l'email{% endblock %}
+
+{% block body %}
+    <div class="container-society-modify">
+        <div class="container-header">
+            <h1>Modification de l'email {{ user.email }}</h1>
+        </div>
+        <div class="container-body">
+            {{ form_start(form) }}
+                <div class="label-form">{{ form_label(form.email, "Email: ") }}</div>
+                <div class="container-input-form">{{ form_widget(form.email, {'attr': {'class': 'regular-input-form'}}) }}</div>
+                <button class="blue-button regular-button">{{ button_label|default('Sauvegarder') }}</button>
+                <a class="regular-button blue-button" href="{{ path('user_edit', {id: user.id}) }}">Retour</a>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

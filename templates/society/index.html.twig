@@ -2,43 +2,59 @@
 
 {% block title %}Gestion des sociétés - CRM3000{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('societyIndex') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Gestion des sociétés</h1>
+<div class="container-society-index">
+    <div class="container-header">
+        <h1>Gestion des sociétés</h1>
+    </div>
+    <div class="container-table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Gérant</th>
+                    <th>Adresse</th>
+                    <th>Ville</th>
+                    <th>Code Postal</th>
+                    <th>Siret</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for society in societies %}
+                <tr>
+                    <td>{{ society.id }}</td>
+                    <td>{{ society.name }}</td>
+                    {% if society.manager %}
+                        <td>{{ society.manager.email }}</td>
+                    {% else %}
+                        <td>Aucun</td>
+                    {% endif %}
+                    <td>{{ society.address }}</td>
+                    <td>{{ society.city }}</td>
+                    <td>{{ society.postalCode }}</td>
+                    <td>{{ society.siret }}</td>
+                    <td>
+                        <a class="form-action-button" href="{{ path('society_show', {'id': society.id}) }}">Afficher</a>
+                        <a class="form-action-button" href="{{ path('society_edit', {'id': society.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Aucune société</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Adresse</th>
-                <th>Ville</th>
-                <th>Code Postal</th>
-                <th>Siret</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for society in societies %}
-            <tr>
-                <td>{{ society.id }}</td>
-                <td>{{ society.name }}</td>
-                <td>{{ society.address }}</td>
-                <td>{{ society.city }}</td>
-                <td>{{ society.postalCode }}</td>
-                <td>{{ society.siret }}</td>
-                <td>
-                    <a href="{{ path('society_show', {'id': society.id}) }}">Afficher</a>
-                    <a href="{{ path('society_edit', {'id': society.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">Aucune société</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('society_new') }}">Créer une société</a>
-    <a href="{{ path('admin_dashboard_index') }}">Retour au dashboard</a>
+        <a class="regular-button blue-button" href="{{ path('society_new') }}">Créer une société</a>
+        <a class="regular-button blue-button" href="{{ path('admin_dashboard_index') }}">Retour au dashboard</a>
+    </div>
+</div>
+    {{ encore_entry_script_tags('societyIndex') }}
 {% endblock %}

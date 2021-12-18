@@ -1,4 +1,15 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+    <div class="label-form">{{ form_label(form.name, "Nom: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.name, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.price, "Prix: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.price, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.quantity, "Quantité: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.quantity, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.society, "Société: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.society, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <button class="blue-button regular-button">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}

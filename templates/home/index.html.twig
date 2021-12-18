@@ -1,12 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Page d'accueil - CRM3000{% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('homepage') }}
+{% endblock %}
 
 {% block body %}
 <div class="container-homepage">
-    <h1>Homepage</h1>
-
-    <div class="container-welcome">
+    <div class="container-header">
         {% if app.user %}
             <h1>Bienvenue {{app.user.email}}</h1>
         {% else %}
@@ -14,17 +16,18 @@
         {% endif %}   
     </div>
 
-    <div class="container-login">
+    <div class="container-body">
         {% if is_granted("ROLE_ADMIN") %}
-            <a href="{{ path('admin_dashboard_index')}}">Acceder à mon profil</a>
+            <a class="regular-button blue-button" href="{{ path('admin_dashboard_index')}}">Acceder à mon profil</a>
         {% elseif is_granted("ROLE_USER") %}
-            <a href="{{ path('user_dashboard_index')}}">Acceder à mon profil</a>
+            <a class="regular-button blue-button" href="{{ path('user_dashboard_index')}}">Acceder à mon profil</a>
         {% endif %}
         {% if app.user %}
-            <a href="{{ path('app_logout')}}">Se déconnecter</a>
+            <a class="logout-button regular-button" href="{{ path('app_logout')}}">Se déconnecter</a>
         {% else %}
-            <a href="{{ path('app_login')}}">Se connecter</a>
+            <a class="login-button regular-button" href="{{ path('app_login')}}">Se connecter</a>
         {% endif %}
     </div>
 </div>
+    {{ encore_entry_script_tags('homepage') }}
 {% endblock %}

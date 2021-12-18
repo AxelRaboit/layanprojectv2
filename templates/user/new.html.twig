@@ -2,10 +2,19 @@
 
 {% block title %}Création utilisateur - CRM3000{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('adminUserNew') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Créer un nouvel utilisateur</h1>
-
-    {{ include('user/_form.html.twig') }}
-
-    <a class="" href="{{ app.request.headers.get('referer') }}">Retour</a>
+    <div class="container-item-new">
+        <div class="container-header">
+            <h1>Créer un nouvel utilisateur</h1>
+        </div>
+        <div class="container-body">
+            {{ include('user/_form.html.twig') }}
+            <a class="regular-button blue-button" href="{{ app.request.headers.get('referer') }}">Retour</a>
+        </div>
+    </div>
+    {{ encore_entry_script_tags('adminUserNew') }}
 {% endblock %}

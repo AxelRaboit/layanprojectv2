@@ -2,10 +2,19 @@
 
 {% block title %}Créer une nouvelle société - CRM3000{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('societyNew') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Créer une nouvelle société</h1>
-
-    {{ include('society/_form.html.twig') }}
-
-    <a href="{{ path('society_index') }}">Retour à la liste</a>
+    <div class="container-society-new">
+        <div class="container-header">
+            <h1>Créer une nouvelle société</h1>
+        </div>
+        <div class="container-body">
+            {{ include('society/_form.html.twig') }}
+            <a class="regular-button blue-button" href="{{ path('society_index') }}">Retour à la liste</a>
+        </div>
+    </div>
+    {{ encore_entry_script_tags('societyNew') }}
 {% endblock %}

@@ -1,4 +1,12 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+    <div class="label-form">{{ form_label(form.email, "Email: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.email, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.plainPassword.first, "Mot de passe: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.plainPassword.first, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.plainPassword.second, "Confirmer mot de passe: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.plainPassword.second, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <button class="blue-button regular-button">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}

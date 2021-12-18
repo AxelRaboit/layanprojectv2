@@ -20,19 +20,34 @@ class SocietyType extends AbstractType
 
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nom'
+                'label' => 'Nom',
+                'attr' => [
+                    'placeholder' => 'ex: Jean'
+                ]
             ])
             ->add('address', TextType::class, [
-                'label' => 'Adresse'
+                'label' => 'Adresse',
+                'attr' => [
+                    'placeholder' => 'ex: 18 rue de la joie'
+                ]
             ])
             ->add('city', TextType::class, [
-                'label' => 'Ville'
+                'label' => 'Ville',
+                'attr' => [
+                    'placeholder' => 'ex: Paris'
+                ]
             ])
             ->add('postalCode', TextType::class, [
-                'label' => 'Code Postal'
+                'label' => 'Code Postal',
+                'attr' => [
+                    'placeholder' => 'ex: 75000'
+                ]
             ])
             ->add('siret', IntegerType::class, [
-                'label' => 'Siret'
+                'label' => 'Siret',
+                'attr' => [
+                    'placeholder' => 'ex: 1435456878'
+                ]
             ])
             ->add('manager', EntityType::class, [
                 'label' => 'Gérant',

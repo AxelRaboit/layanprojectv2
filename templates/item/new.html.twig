@@ -2,10 +2,19 @@
 
 {% block title %}Création de produit - CRM3000{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('itemNew') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Créer un nouveau produit</h1>
-
-    {{ include('item/_form.html.twig') }}
-
-    <a href="{{ path('item_index') }}">Retour à la liste</a>
+    <div class="container-item-new">
+        <div class="container-header">
+            <h1>Créer un nouveau produit</h1>
+        </div>
+        <div class="container-body">
+            {{ include('item/_form.html.twig') }}
+            <a class="regular-button blue-button" href="{{ path('item_index') }}">Retour à la liste</a>
+        </div>
+    </div>
+    {{ encore_entry_script_tags('itemNew') }}
 {% endblock %}

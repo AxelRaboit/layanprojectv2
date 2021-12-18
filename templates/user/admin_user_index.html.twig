@@ -2,35 +2,50 @@
 
 {% block title %}Gestion des utilisateurs - CRM3000{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('adminUserIndex') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Gestion des utilisateurs</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.id }}</td>
-                <td>{{ user.email }}</td>
-                <td>
-                    <a href="{{ path('user_show', {'id': user.id}) }}">Afficher</a>
-                    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">Aucun utilisateur</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('user_new') }}">Créer utilisateur</a>
-    <a href="{{ path('admin_dashboard_index') }}">Interface administrateur</a>
+    <div class="container-admin-user-index">
+        <div class="container-header">
+            <h1>Gestion des utilisateurs</h1>
+        </div>
+        <div class="container-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Email</th>
+                        <th>Société</th>
+                        <th>actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.email }}</td>
+                        {% if user.society %}
+                            <td>{{ user.society.name }}</td>
+                        {% else %}
+                            <td>Aucune</td>
+                        {% endif %}
+                        <td>
+                            <a class="form-action-button" href="{{ path('user_show', {'id': user.id}) }}">Afficher</a>
+                            <a class="form-action-button" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucun utilisateur</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <a class="regular-button blue-button" href="{{ path('user_new') }}">Créer utilisateur</a>
+            <a class="regular-button blue-button" href="{{ path('admin_dashboard_index') }}">Interface administrateur</a>
+        </div>
+    </div>
+    {{ encore_entry_script_tags('adminUserIndex') }}
 {% endblock %}

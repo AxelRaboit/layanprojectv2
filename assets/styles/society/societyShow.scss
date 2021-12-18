@@ -1,0 +1,42 @@
+@import '../app.scss';
+
+.container-bill-download {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container-body-horizontal {
+    display: flex;
+    justify-content: center;
+}
+
+.container-table, .container-list {
+    width: 100%;
+}
+
+.container-list {
+    font-family: sans-serif;
+    padding-top: 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-list h3 {
+    width: 300px;
+    text-align: center;
+    padding: 10px;
+    background-color:#006bae;
+    color: #d5d5d5;
+    border-radius: 5px 5px 0 0;
+}
+
+.container-list p, li {
+    list-style-type: none;
+    background-color: #d5d5d5;
+    padding: 10px;
+    width: 300px;
+    text-align: center;
+    border-radius: 0 0 5px 5px;
+}

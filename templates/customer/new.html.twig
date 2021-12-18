@@ -2,10 +2,19 @@
 
 {% block title %}Nouveau customer - CRM3000{% endblock %}
 
+{% block stylesheets %}
+    {{ encore_entry_link_tags('customerNew') }}
+{% endblock %}
+
 {% block body %}
-    <h1>Création d'un customer</h1>
-
-    {{ include('customer/_form.html.twig') }}
-
-    <a class="" href="{{ app.request.headers.get('referer') }}">Retour</a>
+    <div class="container-item-new">
+        <div class="container-header">
+            <h1>Création d'un customer</h1>
+        </div>
+        <div class="container-body">
+            {{ include('customer/_form.html.twig') }}
+            <a class="regular-button blue-button" href="{{ path('customer_index') }}">Retour</a>
+        </div>
+    </div>
+    {{ encore_entry_script_tags('customerNew') }}
 {% endblock %}

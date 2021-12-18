@@ -1,4 +1,21 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Sauvegarder') }}</button>
+    <div class="label-form">{{ form_label(form.name, "Nom: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.name, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.address, "Adresse: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.address, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.city, "Ville: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.city, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.postalCode, "Code Postal: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.postalCode, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.siret, "Siret: ") }}</div>
+    <div class="container-input-form">{{ form_widget(form.siret, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <div class="label-form">{{ form_label(form.manager, "Gérant: ") }}</div>
+    <div class="form-select container-input-form">{{ form_widget(form.manager, {'attr': {'class': 'regular-input-form'}}) }}</div>
+
+    <button class="blue-button regular-button">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}
